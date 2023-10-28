@@ -10,37 +10,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
-    <link href="estilos.css" rel="stylesheet">
+    <link href="/estilos.css" rel="stylesheet">
 
 </head>
 <body>
     <div class="encabezado_titulo">
-        <img src="wapp.jpg" class="imagen">
+        <img src="/wapp.jpg" class="imagen">
         <h2 class="titulo">Distribuidora Los Plaplas</h2>
     </div>
     <!-- Agrega los botones de navegación -->
     <div class="barra-navegacion">
-        <a href="index_producto.html">Productos</a>
-        <a href="index_pedido.html">Pedidos</a>
-        <a href="index_camion.html">Camiones</a>
-        <a href="index_envio.html">Envíos</a>
+        <a href="/productos/index_producto.html">Productos</a>
+        <a href="/pedidos/index_pedido.html">Pedidos</a>
+        <a href="/camiones/index_camion.html">Camiones</a>
+        <a href="/envios/index_envio.html">Envíos</a>
     </div>
     </div>
-        <h3>Envios</h3>
+        <h3>Pedidos</h3>
     </div>
-   
     <div class="botonera">
-        <a href="form_producto.html">Ingresar parada</a>
-        <a href="form_producto.html">Finalizar envio</a>
-    </div>
+        <a href="form_nuevo_pedido.html">Nuevo pedido</a>
+    </div> 
+    <!-- <div class="botonera"> 
+        <a href="form_producto.html">Nuevo producto</a>
+    </div>-->
     <table id="elementosTable" cellspacing="0" cellpadding="0">
         <thead> <!-- engloba todas las filas de encabezado -->
             <tr>
                 <th>Codigo pedido</th>
-                <th>Codigo camion</th>
-                <th>Ciudad</th>
-                <th>Kilometros recorridos</th>
+                <th>Productos</th>
+                <th>Cantidad</th>
+                <th>Ciudad destino</th>
                 <th>Estado</th>
+                <th>Fecha de pedido</th>
+                <th>Aceptar / Cancelar</th>
             </tr>
         </thead>
         <tbody> <!-- Todas las filas de datos -->

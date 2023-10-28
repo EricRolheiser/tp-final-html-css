@@ -10,28 +10,44 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
-    <link href="estilos.css" rel="stylesheet">
+    <link href="/estilos.css" rel="stylesheet">
 
 </head>
 <body>
     <div class="encabezado_titulo">
-        <img src="wapp.jpg" class="imagen">
+        <img src="/wapp.jpg" class="imagen">
         <h2 class="titulo">Distribuidora Los Plaplas</h2>
     </div>
     <!-- Agrega los botones de navegación -->
     <div class="barra-navegacion">
-        <a href="index_producto.html">Productos</a>
-        <a href="index_pedido.html">Pedidos</a>
-        <a href="index_camion.html">Camiones</a>
-        <a href="index_envio.html">Envíos</a>
+        <a href="/productos/index_producto.html">Productos</a>
+        <a href="/pedidos/index_pedido.html">Pedidos</a>
+        <a href="/camiones/index_camion.html">Camiones</a>
+        <a href="/envios/index_envio.html">Envíos</a>
     </div>
     </div>
         <h3>Camiones</h3>
     </div>
     <div class="botonera">
-        <a href="form_producto.html">Nuevo camion</a>
-        <a href="form_producto.html">Listado camiones</a>
+        <a href="form_nuevo_camion.html">Nuevo camion</a>
+        <a href="form_camiones.html">Listado camiones</a>
         <a href="form_producto.html">Iniciar envio</a>
+    </div>
+    <div class="filtro-container">
+        <div class="filtro-title">
+            <h2>Filtros</h2>
+        </div>
+        <div class="filtro-filters">
+            <div class="filtro-item">
+                <label for="patente">Patente:</label>
+                <input type="text" id="FiltroPatente" name="FiltroPatente">
+            </div>
+        </div>
+    
+        <div class="filtro-buttons">
+            <button class="filtro-button" onclick="obtenerCamionPorPatente()">Filtrar</button> 
+            <button class="filtro-button secondary">Quitar Filtros</button>
+        </div>
     </div>
     <table id="elementosTable" cellspacing="0" cellpadding="0">
         <thead> <!-- engloba todas las filas de encabezado -->

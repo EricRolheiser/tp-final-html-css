@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="origin">
-    <title>Document</title>
+    <title>Nuevo Producto</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link href="styles_form.css" rel="stylesheet" >
+    <link href="/styles_form.css" rel="stylesheet" >
 </head>
 <body>
 
@@ -40,12 +40,13 @@
                 <input type="number" id="stock-actual" name="stock-actual" required>
             </div>
             <button type="submit">Guardar Producto</button>
-            <button type="button" class="cancelar">Cancelar</button>
+            <button type="button" class="cancelar" onclick="window.location.href='/productos/index_producto.html';">Cancelar</button>
         </form>
     </div>
 
     <div class="botonera">
         <!-- Contenido de la botonera -->
     </div>
+    <script src="form.js"></script>
 </body>
 </html>
