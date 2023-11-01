@@ -16,6 +16,10 @@
         <h2>Dar de Alta Producto Alimenticio</h2>
         <form>
             <div class="form-group">
+                <label for="codigo-producto">Código de Producto:</label>
+                <input type="text" id="codigo-producto" name="codigo-producto" required>
+            </div>
+            <div class="form-group">
                 <label for="tipo">Tipo de Producto:</label>
                 <input type="text" id="tipo" name="tipo" required>
             </div>
@@ -39,7 +43,7 @@
                 <label for="stock-actual">Cantidad en Stock:</label>
                 <input type="number" id="stock-actual" name="stock-actual" required>
             </div>
-            <button type="submit">Guardar Producto</button>
+            <button type="submit" onclick="guardarProducto()">Guardar Producto</button>
             <button type="button" class="cancelar" onclick="window.location.href='/productos/index_producto.html';">Cancelar</button>
         </form>
     </div>

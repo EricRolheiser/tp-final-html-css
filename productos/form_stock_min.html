@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="origin">
-    <title>Pedidos</title>
+    <title>Producto</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,25 +26,22 @@
         <a href="/camiones/index_camion.html">Camiones</a>
         <a href="/envios/index_envio.html">Envíos</a>
     </div>
+
     </div>
-        <h3>Pedidos</h3>
+        <h3>Productos con stock menor al minimo</h3>
     </div>
-    <div class="botonera">
-        <a href="form_nuevo_pedido.html">Nuevo pedido</a>
-    </div> 
-    <!-- <div class="botonera"> 
-        <a href="form_producto.html">Nuevo producto</a>
-    </div>-->
     <table id="elementosTable" cellspacing="0" cellpadding="0">
         <thead> <!-- engloba todas las filas de encabezado -->
             <tr>
-                <th>Codigo pedido</th>
-                <th>Productos</th>
-                <th>Cantidad</th>
-                <th>Ciudad destino</th>
-                <th>Estado</th>
-                <th>Fecha de pedido</th>
-                <th>Aceptar / Cancelar</th>
+                <th>Codigo producto</th>
+                <th>Nombre</th>
+                <th>Tipo de prodcuto</th>
+                <th>Precio unitario</th>
+                <th>Peso unitario</th>
+                <th>Stock Minimo</th>
+                <th>Stock Actual</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
             </tr>
         </thead>
         <tbody> <!-- Todas las filas de datos -->
@@ -55,6 +52,6 @@
         </tfoot>
     </table>
     
-    <script src="scripts.js"></script>
+    <script src="form_stock_min.js"></script>
 </body>
 </html>

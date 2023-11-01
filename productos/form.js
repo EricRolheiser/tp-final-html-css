@@ -5,13 +5,22 @@ customHeaders.append("Accept-Encoding", "gzip, deflate, br");
 customHeaders.append("Connection", "keep-alive");
 
 document.addEventListener("DOMContentLoaded", function (event) {
-  //verifico si tiene el parametro id
   const urlParams = new URLSearchParams(window.location.search);
   const codProducto = urlParams.get("id");
   const operacion = urlParams.get("tipo");
 
   if (codProducto != "" && codProducto != null && operacion == "ELIMINAR") {
     eliminarProducto(codProducto);
+  } else if (
+    codProducto != "" &&
+    codProducto != null &&
+    operacion == "EDITAR"
+  ) {
+    document
+      .getElementById("form")
+      .addEventListener("submit", function (event) {
+        actualizarProducto(event);
+      });
   } else {
     document
       .getElementById("form")
@@ -24,55 +33,80 @@ document.addEventListener("DOMContentLoaded", function (event) {
 function guardarProducto() {
   //armo la data a enviar
   const data = {
-    codigo_producto: document.getElementById("CodigoProducto").value,
+    codigo_producto: document.getElementById("codigo-producto").value,
     fecha_creacion: "2023-10-14T12:00:00Z",
     fecha_ultima_actualizacion: "2023-10-14T12:00:00Z",
-    tipo_producto: document.getElementById("TipoProducto").value,
-    nombre: document.getElementById("Nombre").value,
-    peso_unitario: parseFloat(document.getElementById("PesoUnitario").value),
+    tipo_producto: document.getElementById("tipo").value,
+    nombre: document.getElementById("nombre").value,
+    peso_unitario: parseFloat(document.getElementById("peso").value),
     precio_unitario: parseFloat(
-      document.getElementById("PrecioUnitario").value
+      document.getElementById("precio").value
     ),
-    stock_minimo: parseInt(document.getElementById("StockMinimo").value),
-    stock_actual: parseInt(document.getElementById("StockActual").value),
+    stock_minimo: parseInt(document.getElementById("stock-minimo").value),
+    stock_actual: parseInt(document.getElementById("stock-actual").value),
     id_creador: parseInt(document.getElementById("IdCreador").value),
   };
 
-  fetch(`http://localhost:8080/productos`, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: customHeaders,
-  }) // Realizar la solicitud de búsqueda (fetch) al servidor
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Error en la solicitud al servidor.");
-      }
-
-      window.location = "/productos/index_producto.html";
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      alert(error);
-      window.location = "/productos/form_nuevo_producto.html";
-    });
+  makeRequest(
+    `${urlConFiltro}`,
+    Method.POST,
+    data,
+    ContentType.JSON,
+    CallType.PRIVATE,
+    exitoProducto,
+    errorProducto
+  );
 }
 
 function eliminarProducto(codProducto) {
   if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
-    fetch(`http://localhost:8080/productos/${codProducto}`, {
-      method: "DELETE",
-      headers: customHeaders,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Error en la solicitud al servidor.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert(error);
-      });
+    makeRequest(
+      `${urlConFiltro}/${codProducto}`,
+      Method.DELETE,
+      data,
+      ContentType.JSON,
+      CallType.PRIVATE,
+      exitoProducto,
+      errorProducto
+    );
   } else {
     window.location = "/productos/index_producto.html";
   }
+}
+
+function exitoProducto(data) {
+  window.location = window.location.origin + "/productos/index_producto.html";
+}
+
+function errorProducto(response) {
+  alert("Error en la solicitud al servidor.");
+  console.log(response.json());
+  throw new Error("Error en la solicitud al servidor.");
+}
+
+function actualizarProducto() {
+  const data = {
+    codigo_producto: document.getElementById("codigo-producto").value,
+    fecha_creacion: "2023-10-14T12:00:00Z",
+    fecha_ultima_actualizacion: "2023-10-14T12:00:00Z",
+    tipo_producto: document.getElementById("tipo").value,
+    nombre: document.getElementById("nombre").value,
+    peso_unitario: parseFloat(document.getElementById("peso").value),
+    precio_unitario: parseFloat(
+      document.getElementById("precio").value
+    ),
+    stock_minimo: parseInt(document.getElementById("stock-minimo").value),
+    stock_actual: parseInt(document.getElementById("stock-actual").value),
+    id_creador: parseInt(document.getElementById("IdCreador").value),
+  };
+
+  makeRequest(
+    `${urlConFiltro}/${data.codigo_producto}`,
+    Method.PUT,
+    data,
+    ContentType.JSON,
+    CallType.PRIVATE,
+    exitoProducto,
+    errorProducto
+  );
 }
